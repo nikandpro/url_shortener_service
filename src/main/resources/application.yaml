@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=url_shortener
+    url: jdbc:postgresql://localhost:5432/postgres
     username: user
     password: password
 
@@ -9,10 +9,29 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
+    show-sql: false
+
+  data:
+    redis:
+      port: 6379
+      host: localhost
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+hash:
+  clean:
+    interval:
+      value: year
+      count: 1
+  scheduler:
+    cron: 0 0 0 * * ?
+  generator:
+    base62: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
+  cache:
+    min-size: 0.2
+    capacity: 10
+    range: 100
 
 server:
   port: 8080
@@ -20,3 +39,17 @@ server:
 logging:
   level:
     root: info
+
+async:
+  generator_thread_pool:
+    core_pool_size: 10
+    max_pool_size: 20
+    queue_capacity: 50
+  cache_thread_pool:
+    core_pool_size: 10
+    max_pool_size: 20
+    queue_capacity: 50
+  scheduler_thread_pool:
+    core_pool_size: 10
+    max_pool_size: 20
+    queue_capacity: 50
