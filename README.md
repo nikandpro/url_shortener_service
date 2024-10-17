@@ -9,6 +9,6 @@ While the primary function of the service is URL shortening, it also offers seve
 - **REST API**: Provides a straightforward RESTful interface for seamless interaction.
 - **Resource Reuse Scheduler**: Enhances resource management by scheduling the reuse of resources.
 ## Performance Optimization
-To further enhance the performance of the microservice, I have implemented a **local cache** in memory using a thread-safe data structure. This significantly boosts overall efficiency and reduces latency.
+To further enhance the performance of the microservice, I have implemented a **local cache** in memory using a **thread-safe data structure**. This significantly boosts overall efficiency and reduces latency.
 ## Microservice Interaction
 The main service will interact with the URL Shortener via its **REST API**, facilitating genuine microservice-based communication. This architecture enables us to tackle common challenges in microservice environments, such as scalability, reliability, and service discovery.
